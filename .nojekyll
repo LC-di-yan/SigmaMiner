@@ -1,0 +1,1 @@
+# 阻止 GitHub Pages 走 Jekyll 处理，确保 data/ 与 assets/ 原样发布

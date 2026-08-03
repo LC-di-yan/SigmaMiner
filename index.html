@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SigmaMiner · 材料科学文献驱动的科学发现智能体</title>
+<meta name="description" content="GOAI 世界人工智能大赛 赛道三 方向三 主题一 · argyrodite Li₆PS₅Cl 固态电解质合成路线与工艺优化">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1b3e'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23ff9b42' font-family='Georgia'%3E%CF%83%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="topnav" id="topnav">
+  <a class="brand" href="#top"><span class="sig">σ</span> SigmaMiner</a>
+  <div class="links">
+    <a href="#system">系统</a>
+    <a href="#data">数据</a>
+    <a href="#discover">自主发现</a>
+    <a href="#gaps">Gap</a>
+    <a href="#hypotheses">假设</a>
+    <a href="#routes">路线</a>
+    <a href="#comparator">对照</a>
+    <a href="#evidence">证据回溯</a>
+    <a href="#reproduce">复现</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="kicker">GOAI 世界人工智能大赛 · 赛道三 · 方向三 · 主题一</p>
+    <h1><span class="sig big">σ</span> SigmaMiner</h1>
+    <p class="tagline" id="hero-tagline"></p>
+    <p class="subtitle" id="hero-subtitle"></p>
+    <div class="hero-stats" id="hero-stats"></div>
+    <div class="hero-cta">
+      <a class="btn primary" href="#discover">看自主发现闭环</a>
+      <a class="btn ghost" href="#reproduce">复现与开源</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="sec" id="system">
+    <div class="sec-head">
+      <h2>01 · 它是什么</h2>
+      <p class="lead">用 LLM 智能体完成「文献检索 → 结构化抽取 → 研究空白识别 → 假设生成 → 合成路线设计 → 证据回溯 → 对照验证」的全链路科学发现闭环。</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>解决的问题</h3>
+        <p>硫银锗矿（argyrodite）Li₆PS₅Cl 是极具前景的固态电解质，但「高电导率 × 空气稳定性」难以兼得，跨文献工艺条件分散、难以横向比较。人工阅读海量文献找研究空白、设计合成路线，耗时且不可复现。</p>
+      </div>
+      <div class="card">
+        <h3>我们的方法</h3>
+        <p>系统自主阅读 <strong>346 篇全文</strong>，结构化抽取为 346 条记录，识别 12 个 Research Gap、生成 13 条候选假设与 5 条合成路线；每条主张都锚定证据记录、可一键回溯原文；四臂对照协议量化「有证据/无证据断言」差异。</p>
+      </div>
+    </div>
+    <div class="fig-wrap">
+      <img src="assets/figures/fig_03_evidence_architecture.png" alt="系统两层架构图" loading="lazy">
+      <p class="fig-cap">两层架构：数据 / 审计层（自研纯标准库）+ 编排层（AgentScope 2.0 自主发现循环）</p>
+    </div>
+  </section>
+
+  <section class="sec" id="data">
+    <div class="sec-head">
+      <h2>02 · 数据面板</h2>
+      <p class="lead">全部数字可回溯到本地证据链，构建时从 <code>data/</code> 自动生成。</p>
+    </div>
+    <div class="bigstat-row" id="bigstats"></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>字段覆盖率 <span class="hint">（346 条记录分母）</span></h3>
+        <div class="bars" id="coverage-bars"></div>
+      </div>
+      <div class="card">
+        <h3>API 预算 <span class="hint">（全链路可复现）</span></h3>
+        <div class="budget" id="budget"></div>
+      </div>
+    </div>
+    <div class="fig-wrap">
+      <img src="assets/figures/fig_01_phase_progress.png" alt="语料规模阶段图" loading="lazy">
+      <img src="assets/figures/fig_02_field_coverage.png" alt="字段覆盖率图" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec alt" id="discover">
+    <div class="sec-head">
+      <h2>03 · 自主发现闭环 <span class="badge">核心</span></h2>
+      <p class="lead">系统并非批处理流水线，而是一个能自主「读知识库 → 判断证据不足 → 触发补检 → 生成 Gap / 假设 / 路线并写回」的智能体。</p>
+    </div>
+    <div class="disc-head" id="disc-head"></div>
+    <div class="disc-trail" id="disc-trail"></div>
+    <div class="disc-out">
+      <div class="mini-card">
+        <h3>自主产出 Gap</h3>
+        <div id="disc-gap"></div>
+      </div>
+      <div class="mini-card">
+        <h3>自主产出假设</h3>
+        <div id="disc-hyp"></div>
+      </div>
+      <div class="mini-card">
+        <h3>自主产出路线</h3>
+        <div id="disc-route"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="gaps">
+    <div class="sec-head">
+      <h2>04 · Research Gap × <span id="gap-count"></span></h2>
+      <div class="filters" id="gap-filters"></div>
+    </div>
+    <div class="cards" id="gap-cards"></div>
+  </section>
+
+  <section class="sec alt" id="hypotheses">
+    <div class="sec-head">
+      <h2>05 · 候选假设 × <span id="hyp-count"></span></h2>
+      <p class="lead">每条假设由「组成 / 工艺 / 机制」组合，锚定支撑记录，标注新颖性。</p>
+    </div>
+    <div class="cards" id="hyp-cards"></div>
+  </section>
+
+  <section class="sec" id="routes">
+    <div class="sec-head">
+      <h2>06 · 候选合成路线 × <span id="route-count"></span></h2>
+      <p class="lead">前驱体、工艺条件、验证手段逐步骤给出，每步锚定证据记录。</p>
+    </div>
+    <div class="cards" id="route-cards"></div>
+  </section>
+
+  <section class="sec alt" id="comparator">
+    <div class="sec-head">
+      <h2>07 · 四臂对照审计</h2>
+      <p class="lead">同一套指标下比较 4 类路线生成方式，证明「检索 + 结构化抽取 + 证据回溯」的增量价值。</p>
+    </div>
+    <div class="comp-table" id="comp-table"></div>
+    <p class="comp-note" id="comp-interp"></p>
+    <div class="fig-wrap">
+      <img src="assets/figures/fig_06_comparator.png" alt="四臂对照审计图" loading="lazy">
+      <img src="assets/figures/fig_04_counterevidence_narrowing.png" alt="反证驱动的假设收缩图" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec" id="evidence">
+    <div class="sec-head">
+      <h2>08 · 证据链回溯</h2>
+      <p class="lead">每条主张 → <code>record_id</code> → <code>doc_id</code> → 原文。100% 可回溯。下方可直接检索 346 条结构化记录。</p>
+    </div>
+    <div class="searchbox">
+      <input id="record-search" type="search" placeholder="搜索记录：输入材料 / 组分 / 关键词，如 Li6PS5Cl0.5Br0.5、球磨、UDSH…">
+      <span class="search-count" id="record-count"></span>
+    </div>
+    <div class="cards" id="record-cards"></div>
+  </section>
+
+  <section class="sec alt" id="reproduce">
+    <div class="sec-head">
+      <h2>09 · 复现与开源</h2>
+      <p class="lead">运行时零重型依赖，数据 / 审计层为纯 Python 标准库，认知层唯一第三方运行时依赖为 AgentScope 2.0（Apache-2.0）。</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>一条命令复现评估</h3>
+        <pre class="code">pip install -r requirements.txt
+python -m agent.run --stage evaluate   # 输出 SHA 确定性一致
+python -m agent.run --stage compare    # 四臂对照审计
+python -m agent.run --stage discover --goal "…" --max-rounds 8</pre>
+      </div>
+      <div class="card">
+        <h3>确定性保证</h3>
+        <ul class="plain">
+          <li>随机种子：<code>--seed 42</code>（可复现）</li>
+          <li>证据锚点：<code>doc_id → record_id → 原文 JSON</code></li>
+          <li>审计层零 LLM、零网络</li>
+          <li>依赖披露：Sciverse / DeepSeek / Materials Project / AgentScope</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p><strong>SigmaMiner</strong> · 材料科学文献驱动的科学发现智能体</p>
+  <p>构建于 <span id="foot-generated"></span> · 数据来自本地 <code>data/</code> 证据链 · 无密钥 · 无后端</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
